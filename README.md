@@ -1,5 +1,6 @@
 # Bachelor Thesis
-This is the code and data from my bachelor thesis. Look at [Database Dumps](#database-dumps) if you just want access to the final data. Look at [How To Use](#how-to-use) if you want to run the scripts and create the data yourself.
+## Paper: https://theses.liacs.nl/pdf/2024-2025-RijnfrankJJoris.pdf
+This is the code and data from my bachelor's thesis. Look at [Database Dumps](#database-dumps) if you just want access to the final data. Look at [How To Use](#how-to-use) if you want to run the scripts and create the data yourself.
 
 
 ## Database Dumps
@@ -13,7 +14,7 @@ After you have downloaded a dump, you can restore the database with the followin
 1. Create a new database: `sudo -u postgres createdb YOUR_DB_NAME`
 2. Restore the data from the `vulnurl.dump` dump: `sudo -u postgres pg_restore -d YOUR_DB_NAME vulnurl.dump`
 
-In step 2 you can replace `vulnurl.dump` with `vulnurl_filtered.dump` if you want the filtered data.
+In step 2, you can replace `vulnurl.dump` with `vulnurl_filtered.dump` if you want the filtered data.
 
 
 
@@ -35,7 +36,7 @@ This was only tested and used on Linux, not other operating systems. It is assum
 2. Create the databases:
     1. `sudo -u postgres createdb -O vulnurl vulnurl`
     2. `sudo -u postgres createdb -O vulnurl vulnurl_filtered`
-3. Initialize databases with the schema and correct `vulnurl` user privileges:
+3. Initialise databases with the schema and correct `vulnurl` user privileges:
     1. `sudo -u postgres psql -d vulnurl -f init_db.sql`
     2. `sudo -u postgres psql -d vulnurl_filtered -f init_db.sql`
 
@@ -44,7 +45,7 @@ This was only tested and used on Linux, not other operating systems. It is assum
 It is assumed you have set up [MoreFixes](https://github.com/JafarAkhondali/Morefixes), or your own source database, locally in PostgreSQL. Edit the database name or user that is used for that connection at the top of `src/main.py` if necessary, `SRC_DB_NAME` and `SRC_DB_USER`.
 
 1. Run the main script to fill the `vulnurl` unfiltered database: `python3 src/main.py`
-2. Wait until that script is finished. On a strong laptop it took ~20 mins.
+2. Wait until that script is finished. On a strong laptop, it took ~20 mins.
 3. Run the filtering script to fill the `vulnurl_filtered` database: `python3 src/filter.py`
-4. Wait until that script is finished. On a strong laptop it took <1 min.
+4. Wait until that script is finished. On a strong laptop, it took <1 min.
 5. Done!
